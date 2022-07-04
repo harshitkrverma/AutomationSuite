@@ -20,7 +20,7 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
+      - name: Build with Maven and Test
         run: mvn clean test
 
       - name: Deploy report page to GitHub Page
