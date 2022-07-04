@@ -10,9 +10,7 @@ import org.junit.runner.RunWith;
         glue = {"mail.harshitkumarvermaAtgmail.com.stepdef"},
         plugin = {
                 "pretty",
-                "html:target/cucumber-reports/cucumber.html",
                 "json:target/cucumber-reports/cucumber.json",
-                "junit:target/cucumber-reports/cucumber-results.xml"
         },
 
         monochrome = true
