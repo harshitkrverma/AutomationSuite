@@ -21,7 +21,7 @@ public class SeleniumHelper {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--disable-extensions");
         chromeOptions.addArguments("--disable-gpu");
-//        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--no-sandbox");
         webDriver = new ChromeDriver(chromeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));

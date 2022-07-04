@@ -49,14 +49,6 @@
       <version>7.0.0</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-junit4</artifactId>
-      <version>2.18.1</version>
-      <scope>test</scope>
-    </dependency>
-
   </dependencies>
 
   <build>
@@ -104,6 +96,46 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M4</version>
+        <configuration>
+          <includes>
+            <include>**/Runner*.java</include>
+          </includes>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.masterthought</groupId>
+        <artifactId>maven-cucumber-reporting</artifactId>
+        <version>5.7.0</version>
+        <executions>
+          <execution>
+            <id>execution</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+
+              <projectName>cucumber</projectName>
+              <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
+              <skip>false</skip>
+              <!-- output directory for the generated report -->
+              <outputDirectory>${project.build.directory}/cucumber-reports-html</outputDirectory>
+              <!-- optional, defaults to outputDirectory if not specified -->
+              <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
+              <jsonFiles>
+                <!-- supports wildcard or name pattern -->
+                <param>**/cucumber.json</param>
+              </jsonFiles>
+
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
