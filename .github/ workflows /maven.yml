@@ -20,9 +20,9 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
+      - name: Test with Maven
         run: mvn clean verify
-      - name: Deploy report
+      - name: Deploy Test report
           uses: peaceiris/actions-gh-pages@v3
           # If you're changing the branch from main,
           # also change the `main` in `refs/heads/main`
