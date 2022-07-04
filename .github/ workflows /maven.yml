@@ -22,9 +22,7 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn clean verify
-
-
-      - name: Deploy
+      - name: Deploy report
           uses: peaceiris/actions-gh-pages@v3
           # If you're changing the branch from main,
           # also change the `main` in `refs/heads/main`
