@@ -22,9 +22,12 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn clean test
-      - name: Upload report
-         uses: actions/upload-artifact@v2.2.4
-         if: always()
-         with:
-           name: Cucumber report
-           path: ./plugin/${{ matrix.plugin }}/target/cucumber-reports-html
+      - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          # If you're changing the branch from main,
+          # also change the `main` in `refs/heads/main`
+          # below accordingly.
+          if: ${{ github.ref == 'refs/heads/main' }}
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./target/cucumber-reports-html/cucumber-html-reports
