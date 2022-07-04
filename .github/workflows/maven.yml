@@ -26,8 +26,7 @@ jobs:
       run: mvn clean verify
 
     - name: Upload report
-      uses: actions/upload-artifact@v2.2.4
-      if: always()
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: Cucumber report
-        path: ./target/cucumber-reports-html/cucumber-html-reports
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target/cucumber-reports-html/cucumber-html-reports
