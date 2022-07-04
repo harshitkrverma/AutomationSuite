@@ -24,9 +24,10 @@ jobs:
         cache: maven
     - name: Build with Maven and test
       run: mvn clean verify
-      
-    - name: Deploy report page to GitHub Page
-      uses: peaceiris/actions-gh-pages@v3
+
+    - name: Upload report
+      uses: actions/upload-artifact@v2.2.4
+      if: always()
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./target/cucumber-reports-html/cucumber-html-reports
+        name: Cucumber report
+        path: ./target/cucumber-reports-html/cucumber-html-reports
