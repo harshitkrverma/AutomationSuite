@@ -55,7 +55,4 @@ public class SeleniumHelper {
         return PageFactory.initElements(getWebDriver(),tClass);
     }
 
-    public static void main(String[] args) {
-        openURL("https://www.youtube.com/watch?v=DSLQYTt8BjA");
-    }
 }
