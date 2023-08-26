@@ -1,7 +1,6 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,19 +9,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class SeleniumHelper {
     public static WebDriver webDriver;
     public static WebDriverWait webDriverWait;
     public static SeleniumHelper seleniumHelper;
 
     SeleniumHelper(){
-        WebDriverManager.chromedriver().setup();
+
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--disable-extensions");
-        chromeOptions.addArguments("--disable-gpu");
-        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.setBrowserVersion("116");
+        chromeOptions.addArguments("--remote-allow-origins=*");
+
+//      chromeOptions.addArguments("--headless");
+//       chromeOptions.addArguments("--no-sandbox");
         webDriver = new ChromeDriver(chromeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_TIMEOUT_SECONDS));
@@ -45,12 +44,13 @@ public class SeleniumHelper {
         setWebDriver();
         webDriver.get(url);
     }
-
+//    TODO : Optimise Singleton method
     public static void setWebDriver(){
         if (seleniumHelper==null)
             seleniumHelper = new SeleniumHelper();
     }
 
+//    TODO
     public static <T> T pagefactoryInit(Class<T> tClass){
         return PageFactory.initElements(getWebDriver(),tClass);
     }
