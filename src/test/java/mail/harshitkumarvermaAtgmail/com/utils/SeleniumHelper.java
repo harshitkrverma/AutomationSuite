@@ -14,11 +14,12 @@ public class SeleniumHelper {
     public static WebDriverWait webDriverWait;
     public static SeleniumHelper seleniumHelper;
 
-    SeleniumHelper(){
+    private SeleniumHelper(){
 
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setBrowserVersion("116");
+//        chromeOptions.setBrowserVersion("115");
         chromeOptions.addArguments("--remote-allow-origins=*");
+//        chromeOptions.setExperimentalOption("debuggerAddress", "127.0.0.1:9222");
 
 //      chromeOptions.addArguments("--headless");
 //       chromeOptions.addArguments("--no-sandbox");
@@ -29,6 +30,8 @@ public class SeleniumHelper {
     }
 
     public static WebDriver getWebDriver(){
+        if (seleniumHelper==null)
+            seleniumHelper = new SeleniumHelper();
         return webDriver;
     }
 
@@ -41,21 +44,12 @@ public class SeleniumHelper {
         return new WebDriverWait(webDriver, Duration.ofSeconds(timeoutInSeconds));
     }
     public static void openURL(String url){
-        setWebDriver();
+        getWebDriver();
         webDriver.get(url);
     }
-//    TODO : Optimise Singleton method
-    public static void setWebDriver(){
-        if (seleniumHelper==null)
-            seleniumHelper = new SeleniumHelper();
+
+    public static <T> void pageFactoryInit(Class<T> tClass){
+        PageFactory.initElements(getWebDriver(), tClass);
     }
 
-//    TODO
-    public static <T> T pagefactoryInit(Class<T> tClass){
-        return PageFactory.initElements(getWebDriver(),tClass);
-    }
-
-    public static void main(String[] args) {
-        openURL("https://www.youtube.com/watch?v=DSLQYTt8BjA");
-    }
 }

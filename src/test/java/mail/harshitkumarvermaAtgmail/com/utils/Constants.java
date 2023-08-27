@@ -8,4 +8,6 @@ public class Constants {
     public static String URL = "https://www.swiggy.com/";
     public static String RESOURCE_FILE = "Resource.properties";
     public static int CONNECTION_TIMEOUT = 60000;
+    public static String TEST_DATA = "src/test/resources/data/testdata.json";
+    public static String TEST_ID_PREFIX = "@Test_id_";
 }
