@@ -27,4 +27,10 @@ public class ElementHelper {
         scrollToElement(webElement);
         return webElement.getAttribute(attribute);
     }
+
+    public static String getTextOfElement(WebElement webElement){
+        WaitHelper.waitForElementToBeDisplayed(webElement);
+        scrollToElement(webElement);
+        return webElement.getText();
+    }
 }

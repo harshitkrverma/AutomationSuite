@@ -3,20 +3,19 @@ package mail.harshitkumarvermaAtgmail.com.utils;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-
+import java.util.HashMap;
 import java.util.List;
 
 public class ScenarioHelper {
     private static List<String> tags;
+    public static HashMap<String, String> scenarioDataMap = new HashMap<>();
     @Before
     public static void beforeScenario(Scenario scenario){
-        System.out.println("This is called");
         tags = (List<String>) scenario.getSourceTagNames();
-        System.out.println(tags);
         for (String tag:
              tags) {
+//            TODO: handle if no TestTag is present
             if(tag.contains(Constants.TEST_ID_PREFIX)){
-                System.out.println("This is called too");
                 TestData.addScenarioDataMap("testId",tag.replace(Constants.TEST_ID_PREFIX, ""));
             }
         }
@@ -24,6 +23,7 @@ public class ScenarioHelper {
 
     @After
     public static void afterScenario(){
+        scenarioDataMap.clear();
         tags.clear();
     }
 }
