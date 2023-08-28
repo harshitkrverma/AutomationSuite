@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/features/"},
-//        tags = "@Test_id_TC03",
         glue = {"mail.harshitkumarvermaAtgmail.com.stepdef", "mail.harshitkumarvermaAtgmail.com.utils"},
         plugin = {
                 "pretty",
@@ -18,5 +17,5 @@ import org.junit.runner.RunWith;
 
         monochrome = true
 )
-public class TestRunner {
+public class RunCucumberIT {
 }

@@ -19,4 +19,8 @@ public class AssertionHelper {
     public static void assertTextMatch(String expected, String actual){
         Assert.assertEquals(expected, actual);
     }
+
+    public static void assertContainsText(String expected, String actual){
+        Assert.assertTrue(actual.contains(expected));
+    }
 }
