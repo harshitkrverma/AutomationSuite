@@ -19,10 +19,7 @@ public class HomePageLocators {
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'this user has been locked out')]")
     public static WebElement lockedOut;
-//    @FindBy(how = How.XPATH, using = "")
-//    public static WebElement x;
-//    @FindBy(how = How.XPATH, using = "")
-//    public static WebElement x;
+
 //    @FindBy(how = How.XPATH, using = "")
 //    public static WebElement x;
 }
