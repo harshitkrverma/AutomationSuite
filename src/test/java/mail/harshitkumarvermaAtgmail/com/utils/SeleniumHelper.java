@@ -2,8 +2,8 @@ package mail.harshitkumarvermaAtgmail.com.utils;
 
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,15 +15,9 @@ public class SeleniumHelper {
     public static SeleniumHelper seleniumHelper;
 
     private SeleniumHelper(){
-
-        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.setBrowserVersion("115");
-        chromeOptions.addArguments("--remote-allow-origins=*");
-//        chromeOptions.setExperimentalOption("debuggerAddress", "127.0.0.1:9222");
-
-//      chromeOptions.addArguments("--headless");
-//       chromeOptions.addArguments("--no-sandbox");
-        webDriver = new ChromeDriver(chromeOptions);
+        EdgeOptions edgeOptions = new EdgeOptions();
+        edgeOptions.setBrowserVersion("118");
+        webDriver = new EdgeDriver(edgeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_TIMEOUT_SECONDS));
         webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constants.PAGE_LOAD_TIMEOUT_SECONDS));
