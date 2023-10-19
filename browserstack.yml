@@ -34,10 +34,10 @@ platforms:
     osVersion: Big Sur
     browserName: Chrome
     browserVersion: latest
-  - os: Windows
-    osVersion: 10
-    browserName: Edge
-    browserVersion: latest
+#  - os: Windows
+#    osVersion: 10
+#    browserName: Edge
+#    browserVersion: latest
 
 # =======================
 # Parallels per Platform
