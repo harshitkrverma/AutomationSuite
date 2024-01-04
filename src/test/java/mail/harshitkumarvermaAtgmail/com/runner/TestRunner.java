@@ -16,5 +16,5 @@ import org.junit.runner.RunWith;
                 "junit:target/cucumber-reports/cucumber-results.xml"
         }
 )
-public class Runner {
+public class TestRunner {
 }

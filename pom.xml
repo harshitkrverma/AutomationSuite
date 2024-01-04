@@ -113,7 +113,7 @@
         <version>3.0.0-M4</version>
         <configuration>
           <includes>
-            <include>**/Runner*.java</include>
+            <include>**/*Runner*.java</include>
           </includes>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
