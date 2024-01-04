@@ -1,7 +1,6 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,13 +16,8 @@ public class SeleniumHelper {
     public static SeleniumHelper seleniumHelper;
 
     SeleniumHelper(){
-        WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--disable-extensions");
-        chromeOptions.addArguments("--disable-gpu");
-        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--no-sandbox");
-        chromeOptions.addArguments("--remote-allow-origins=*");
+        chromeOptions.setBrowserVersion("120");
         webDriver = new ChromeDriver(chromeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_TIMEOUT_SECONDS));
