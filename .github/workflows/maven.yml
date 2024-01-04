@@ -5,7 +5,7 @@ name: Cucumber Report
 
 on:
   push:
-    branches: [ main ]
+    branches: [ upgrade_v2_Edge_mvnErrorNotSolve ]
   pull_request:
     branches: [ main ]
 
