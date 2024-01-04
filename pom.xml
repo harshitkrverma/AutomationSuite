@@ -15,6 +15,10 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <allure.version>2.24.0</allure.version>
+    <aspectj.version>1.9.20.1</aspectj.version>
+    <cucumber.version>7.15.0</cucumber.version>
+    <junit-platform.version>1.10.1</junit-platform.version>
+    <classpath>**/*Runner*.java</classpath>
   </properties>
 
   <dependencyManagement>
@@ -29,23 +33,30 @@
     </dependencies>
   </dependencyManagement>
 
+
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.16.1</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>4.14.1</version>
-    </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
-      <version>7.11.0</version>
+      <version>7.15.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>7.15.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -55,9 +66,13 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>7.11.0</version>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-junit4</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -110,40 +125,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M4</version>
+        <version>3.2.3</version>
         <configuration>
           <includes>
-            <include>**/*Runner*.java</include>
+            <include>**/TestRunner.java</include>
           </includes>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>net.masterthought</groupId>
-        <artifactId>maven-cucumber-reporting</artifactId>
-        <version>5.7.0</version>
-        <executions>
-          <execution>
-            <id>execution</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
-              <projectName>cucumber</projectName>
-              <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
-              <skip>false</skip>
-              <!-- output directory for the generated report -->
-              <outputDirectory>${project.build.directory}/cucumber-reports-html</outputDirectory>
-              <!-- optional, defaults to outputDirectory if not specified -->
-              <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
-              <jsonFiles>
-                <!-- supports wildcard or name pattern -->
-                <param>**/cucumber.json</param>
-              </jsonFiles>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
