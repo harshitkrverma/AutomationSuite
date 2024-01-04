@@ -7,16 +7,19 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/features/"},
-//        tags = "@Test_id_TC03",
         glue = {"mail.harshitkumarvermaAtgmail.com.stepdef", "mail.harshitkumarvermaAtgmail.com.utils"},
+        tags = "@Test_id_TC01",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber.html",
-                "json:target/cucumber-reports/cucumber.json",
-                "junit:target/cucumber-reports/cucumber-results.xml"
-        },
+                "json:target/cucumber-reports/cucumber.json"
+//                "junit:target/cucumber-reports/cucumber-results.xml"
+        }
+//        plugin = {
+//                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+//        },
 
-        monochrome = true
+//        monochrome = true
 )
 public class TestRunner {
 }

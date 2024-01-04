@@ -16,7 +16,7 @@ public class SeleniumHelper {
 
     private SeleniumHelper(){
         EdgeOptions edgeOptions = new EdgeOptions();
-        edgeOptions.setBrowserVersion("118");
+        edgeOptions.setBrowserVersion("120");
         webDriver = new EdgeDriver(edgeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_TIMEOUT_SECONDS));

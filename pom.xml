@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>mail.harshitkumarvermaAtgmail.com</groupId>
@@ -15,7 +15,19 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <allure.version>2.24.0</allure.version>
   </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-bom</artifactId>
+        <version>${allure.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -28,139 +40,135 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.11.0</version>
+      <version>4.14.1</version>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
-      <version>7.0.0</version>
+      <version>7.11.0</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>com.google.code.gson</groupId>
-          <artifactId>gson</artifactId>
-          <version>2.10.1</version>
-          <scope>test</scope>
-      </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>RELEASE</version>
       <scope>test</scope>
     </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>io.qameta.allure</groupId>-->
+    <!--      <artifactId>allure-junit5</artifactId>-->
+    <!--      <scope>test</scope>-->
+    <!--    </dependency>-->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
       <version>7.11.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-junit-platform</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.22.0</version>
-          <executions>
-            <execution>
-              <goals>
-                <goal>integration-test</goal>
-                <goal>verify</goal>
-              </goals>
-              <configuration>
-                <parallel>methods</parallel>
-                <useUnlimitedThreads>true</useUnlimitedThreads>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <!--    <pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
+    <!--      <plugins>-->
+    <!--        &lt;!&ndash; clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle &ndash;&gt;-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-clean-plugin</artifactId>-->
+    <!--          <version>3.1.0</version>-->
+    <!--        </plugin>-->
+    <!--        &lt;!&ndash; default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging &ndash;&gt;-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-resources-plugin</artifactId>-->
+    <!--          <version>3.0.2</version>-->
+    <!--        </plugin>-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-compiler-plugin</artifactId>-->
+    <!--          <version>3.8.0</version>-->
+    <!--        </plugin>-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-surefire-plugin</artifactId>-->
+    <!--          <version>2.22.1</version>-->
+    <!--        </plugin>-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-jar-plugin</artifactId>-->
+    <!--          <version>3.0.2</version>-->
+    <!--        </plugin>-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-install-plugin</artifactId>-->
+    <!--          <version>2.5.2</version>-->
+    <!--        </plugin>-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-deploy-plugin</artifactId>-->
+    <!--          <version>2.8.2</version>-->
+    <!--        </plugin>-->
+    <!--        &lt;!&ndash; site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle &ndash;&gt;-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-site-plugin</artifactId>-->
+    <!--          <version>3.7.1</version>-->
+    <!--        </plugin>-->
+    <!--        <plugin>-->
+    <!--          <artifactId>maven-project-info-reports-plugin</artifactId>-->
+    <!--          <version>3.0.0</version>-->
+    <!--        </plugin>-->
+    <!--      </plugins>-->
+    <!--    </pluginManagement>-->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M4</version>
+        <version>3.2.3</version>
         <configuration>
           <includes>
-            <include>**/TestRunner*.java</include>
+            <include>**/TestRunner.java</include>
           </includes>
-          <parallel>methods</parallel>
-          <threadCount>4</threadCount>
-          <perCoreThreadCount>true</perCoreThreadCount>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>net.masterthought</groupId>
-        <artifactId>maven-cucumber-reporting</artifactId>
-        <version>5.7.0</version>
-        <executions>
-          <execution>
-            <id>execution</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
+      <!--      <plugin>-->
+      <!--        <groupId>net.masterthought</groupId>-->
+      <!--        <artifactId>maven-cucumber-reporting</artifactId>-->
+      <!--        <version>5.7.0</version>-->
+      <!--        <executions>-->
+      <!--          <execution>-->
+      <!--            <id>execution</id>-->
+      <!--            <phase>verify</phase>-->
+      <!--            <goals>-->
+      <!--              <goal>generate</goal>-->
+      <!--            </goals>-->
+      <!--            <configuration>-->
 
-              <projectName>cucumber</projectName>
-              <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
-              <skip>false</skip>
-              <!-- output directory for the generated report -->
-              <outputDirectory>${project.build.directory}/cucumber-reports-html</outputDirectory>
-              <!-- optional, defaults to outputDirectory if not specified -->
-              <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
-              <jsonFiles>
-                <!-- supports wildcard or name pattern -->
-                <param>**/cucumber.json</param>
-              </jsonFiles>
+      <!--              <projectName>cucumber</projectName>-->
+      <!--              &lt;!&ndash; optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified &ndash;&gt;-->
+      <!--              <skip>false</skip>-->
+      <!--              &lt;!&ndash; output directory for the generated report &ndash;&gt;-->
+      <!--              <outputDirectory>${project.build.directory}/cucumber-reports-html</outputDirectory>-->
+      <!--              &lt;!&ndash; optional, defaults to outputDirectory if not specified &ndash;&gt;-->
+      <!--              <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>-->
+      <!--              <jsonFiles>-->
+      <!--                &lt;!&ndash; supports wildcard or name pattern &ndash;&gt;-->
+      <!--                <param>**/cucumber.json</param>-->
+      <!--              </jsonFiles>-->
 
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+      <!--            </configuration>-->
+      <!--          </execution>-->
+      <!--        </executions>-->
+      <!--      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -172,3 +180,4 @@
     </plugins>
   </build>
 </project>
+
