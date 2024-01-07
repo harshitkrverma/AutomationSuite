@@ -5,7 +5,7 @@ name: Cucumber Report
 
 on:
   push:
-    branches: [ upgrade_v3_AllureReport ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
