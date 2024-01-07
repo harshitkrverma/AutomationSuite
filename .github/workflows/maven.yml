@@ -5,7 +5,7 @@ name: Cucumber Report
 
 on:
   push:
-    branches: [ upgrade_v2_Edge_mvnErrorNotSolve ]
+    branches: [ upgrade_v3_AllureReport ]
   pull_request:
     branches: [ main ]
 
