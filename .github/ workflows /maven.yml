@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ upgrade_v3_AllureReport ]
+    branches: [ "upgrade_v3_AllureReport" ]
   pull_request:
-    branches: [ github-action ]
+    branches: [ "github-action" ]
 
 jobs:
   build:
