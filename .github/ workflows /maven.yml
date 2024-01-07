@@ -5,7 +5,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ upgrade_v2_Edge_mvnErrorNotSolve ]
+    branches: [ upgrade_v3_AllureReport ]
   pull_request:
     branches: [ github-action ]
 
