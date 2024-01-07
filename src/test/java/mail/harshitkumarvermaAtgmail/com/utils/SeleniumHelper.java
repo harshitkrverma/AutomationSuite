@@ -18,6 +18,7 @@ public class SeleniumHelper {
     SeleniumHelper(){
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setBrowserVersion("120");
+        chromeOptions.addArguments("--headless");
         webDriver = new ChromeDriver(chromeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_TIMEOUT_SECONDS));
