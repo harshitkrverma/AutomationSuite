@@ -1,6 +1,7 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,13 +10,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class SeleniumHelper {
     public static WebDriver webDriver;
     public static WebDriverWait webDriverWait;
     public static SeleniumHelper seleniumHelper;
 
-    SeleniumHelper(){
+    private SeleniumHelper(){
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setBrowserVersion("120");
         chromeOptions.addArguments("--headless");
@@ -26,6 +26,8 @@ public class SeleniumHelper {
     }
 
     public static WebDriver getWebDriver(){
+        if (seleniumHelper==null)
+            seleniumHelper = new SeleniumHelper();
         return webDriver;
     }
 
@@ -38,17 +40,15 @@ public class SeleniumHelper {
         return new WebDriverWait(webDriver, Duration.ofSeconds(timeoutInSeconds));
     }
     public static void openURL(String url){
-        setWebDriver();
+        getWebDriver();
         webDriver.get(url);
     }
 
-    public static void setWebDriver(){
-        if (seleniumHelper==null)
-            seleniumHelper = new SeleniumHelper();
+    public static <T> void pageFactoryInit(Class<T> tClass){
+        PageFactory.initElements(getWebDriver(), tClass);
     }
 
-    public static <T> T pagefactoryInit(Class<T> tClass){
-        return PageFactory.initElements(getWebDriver(),tClass);
+    public static void main(String[] args) {
+        openURL("https://www.youtube.com/watch?v=DSLQYTt8BjA");
     }
-
 }
