@@ -1,10 +1,13 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class ElementHelper {
     private static Actions actions = new Actions(SeleniumHelper.getWebDriver());
+    private static final JavascriptExecutor js = (JavascriptExecutor) SeleniumHelper.getWebDriver();
+
 
     public static void scrollToElement(WebElement webElement){
         actions.moveToElement(webElement).build().perform();
@@ -33,4 +36,13 @@ public class ElementHelper {
         scrollToElement(webElement);
         return webElement.getText();
     }
+
+    public static void clickViaJsExecutor(WebElement webElement) {
+        js.executeScript("arguments[0].click();", webElement);
+    }
+
+    //TODO
+    /*
+     * Element helper method to verify other attributes via js also generic js executor method.
+     */
 }

@@ -35,7 +35,6 @@ public class SeleniumHelper {
     }
 
     public static WebDriverWait getWebDriverWait(long  timeoutInSeconds){
-
         return new WebDriverWait(webDriver, Duration.ofSeconds(timeoutInSeconds));
     }
     public static void openURL(String url){
