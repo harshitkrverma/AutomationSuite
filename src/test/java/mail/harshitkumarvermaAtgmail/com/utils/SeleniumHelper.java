@@ -1,6 +1,5 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,7 +15,7 @@ public class SeleniumHelper {
 
     private SeleniumHelper(){
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setBrowserVersion("120");
+        chromeOptions.setBrowserVersion("121");
         chromeOptions.addArguments("--headless");
         webDriver = new ChromeDriver(chromeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));
@@ -46,7 +45,4 @@ public class SeleniumHelper {
         PageFactory.initElements(getWebDriver(), tClass);
     }
 
-    public static void main(String[] args) {
-        openURL("https://www.youtube.com/watch?v=DSLQYTt8BjA");
-    }
 }
