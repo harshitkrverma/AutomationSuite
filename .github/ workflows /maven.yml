@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ upgrade_v2_Edge_mvnErrorNotSolve ]
+    branches: [ main ]
   pull_request:
-    branches: [ github-action ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -22,9 +22,11 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn clean verify
+      - name: Generate Allure Report
+        run: allure generate --clean
 
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/cucumber-report-html/cucumber-html-reports
+          publish_dir: allure-report/index.html
