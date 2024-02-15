@@ -1,0 +1,5 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","Login scenarios","User is able to login with problem_user","0","0","1","0","0"
+"","Login scenarios","User is able to performance issue","0","0","1","0","0"
+"","Login scenarios","User has been locked out","0","0","1","0","0"
+"","Login scenarios","User is able to login","0","0","1","0","0"
