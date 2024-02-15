@@ -24,7 +24,8 @@ jobs:
         run: mvn clean verify
       - name: Generate Allure Report
         run: allure generate --clean
-
+      - name: Echo
+        run: echo "This is executed"
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
