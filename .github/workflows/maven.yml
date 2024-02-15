@@ -44,13 +44,37 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn clean verify
-      - name: Install Allure
-        run: sudo dpkg -i allure_2.24.0-1_all.deb
-      - name: Generate Allure Report
-        run: allure generate --clean
+      #      - name: Install Allure
+      #        run: sudo dpkg -i allure_2.24.0-1_all.deb
+      #      - name: Generate Allure Report
+      #        run: allure generate --clean
+      #
+      #      - name: Deploy report page to GitHub Page
+      #        uses: peaceiris/actions-gh-pages@v3
+      #        with:
+      #          github_token: ${{ secrets.GITHUB_TOKEN }}
+      #          publish_dir: allure-report/index.html
 
-      - name: Deploy report page to GitHub Page
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: build/allure-results
+
+      - name: Publish test report
         uses: peaceiris/actions-gh-pages@v3
+        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report/index.html
+          publish_branch: gh-pages
+          publish_dir: allure-history
