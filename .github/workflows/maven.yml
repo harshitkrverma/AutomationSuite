@@ -45,7 +45,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean verify
       - name: Install Allure
-        run: brew install allure
+        run: sudo dpkg -i allure_2.24.0-1_all.deb
       - name: Generate Allure Report
         run: allure generate --clean
 
