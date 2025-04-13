@@ -3,6 +3,9 @@ package mail.harshitkumarvermaAtgmail.com.utils;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Utility class to manage and loaded properties from a Resource.properties file.
+ */
 public class PropertiesHelper {
     public static Properties properties  = new Properties();
     static {

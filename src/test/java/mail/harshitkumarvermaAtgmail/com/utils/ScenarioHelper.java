@@ -3,24 +3,40 @@ package mail.harshitkumarvermaAtgmail.com.utils;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Helper class to manage scenario-level data and hooks in Cucumber tests.
+ */
 public class ScenarioHelper {
+
     private static List<String> tags;
+
+    /**
+     * Global scenario data map accessible across test lifecycle.
+     */
     public static HashMap<String, String> scenarioDataMap = new HashMap<>();
+
+    /**
+     * Hook executed before each scenario. Extracts scenario tags and maps test ID if found.
+     *
+     * @param scenario the scenario object
+     */
     @Before
     public static void beforeScenario(Scenario scenario){
         tags = (List<String>) scenario.getSourceTagNames();
-        for (String tag:
-             tags) {
-//            TODO: handle if no TestTag is present
+        for (String tag : tags) {
             if(tag.contains(Constants.TEST_ID_PREFIX)){
-                TestData.addScenarioDataMap("testId",tag.replace(Constants.TEST_ID_PREFIX, ""));
+                TestData.addScenarioDataMap("testId", tag.replace(Constants.TEST_ID_PREFIX, ""));
             }
         }
     }
 
+    /**
+     * Hook executed after each scenario. Clears the data map and tags list.
+     */
     @After
     public static void afterScenario(){
         scenarioDataMap.clear();
