@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class ElementHelper {
 
-    private static Actions actions = new Actions(SeleniumHelper.getWebDriver());
+    private static final Actions actions = new Actions(SeleniumHelper.getWebDriver());
 
     /**
      * Scrolls to the specified WebElement.

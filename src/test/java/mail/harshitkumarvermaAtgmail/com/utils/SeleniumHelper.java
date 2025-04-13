@@ -30,6 +30,7 @@ public class SeleniumHelper {
         if (seleniumHelper == null) {
             synchronized (SeleniumHelper.class) {
                 if (seleniumHelper == null) {
+//TODO : Resolve this
                     seleniumHelper = new SeleniumHelper();
                 }
             }
