@@ -18,7 +18,7 @@ public class SeleniumHelper {
         ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setBrowserVersion("133");
 //        chromeOptions.addArguments("--remote-allow-origins=*");
-        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("--headless");
 //        chromeOptions.addArguments("--no-sandbox");
         webDriver = new ChromeDriver(chromeOptions);
         webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(Constants.DEFAULT_TIMEOUTS_SECONDS));

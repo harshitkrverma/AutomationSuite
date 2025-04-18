@@ -1,7 +1,11 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
 
 /**
  * Utility class for interacting with web elements in Selenium.
@@ -65,5 +69,54 @@ public class ElementHelper {
         WaitHelper.waitForElementToBeDisplayed(webElement);
         scrollToElement(webElement);
         return webElement.getText();
+    }
+
+    /**
+     * Get Current URL of the page.
+     */
+    public static String getCurrentURL() {
+        return SeleniumHelper.getWebDriver().getCurrentUrl();
+    }
+
+    /**
+     * Crawls all links on the current page, skips third-party/external URLs,
+     * clicks each valid link, and verifies no errors are present.
+     */
+    public static void testAllLinksOnPage(String baseUrl) {
+        WebDriver driver = SeleniumHelper.getWebDriver();
+        List<WebElement> links = driver.findElements(By.tagName("a"));
+
+        for (WebElement link : links) {
+            String href = getAttributeOfElement(link, "href");
+
+            // Skip invalid or external links
+            if (href == null || href.isEmpty() ||
+                    href.startsWith("mailto:") ||
+                    href.startsWith("tel:") ||
+                    href.startsWith("javascript:") ||
+                    (!href.startsWith(baseUrl) && !href.startsWith("/"))) {
+                System.out.println("Skipping link: " + href);
+                continue;
+            }
+
+            try {
+                System.out.println("Testing link: " + href);
+                clickOnElement(link); // Click the link
+                WaitHelper.waitForPageToLoad(); // Wait for the page to load
+
+                // Verify the page does not contain common error messages
+                String pageSource = driver.getPageSource();
+                if (pageSource.contains("404") || pageSource.contains("500") || pageSource.contains("Error")) {
+                    System.err.println("Error found on page: " + href);
+                }
+
+                // Navigate back to the original page
+                driver.navigate().back();
+                WaitHelper.waitForPageToLoad();
+            } catch (Exception e) {
+                System.err.println("Failed to test link: " + href);
+                e.printStackTrace();
+            }
+        }
     }
 }

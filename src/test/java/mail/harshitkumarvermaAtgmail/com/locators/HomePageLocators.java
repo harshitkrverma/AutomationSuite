@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.util.List;
+
 public class HomePageLocators {
     @FindBy(how = How.XPATH, using = "//input[@id='user-name']")
     public static WebElement userName;
@@ -20,6 +22,11 @@ public class HomePageLocators {
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'this user has been locked out')]")
     public static WebElement lockedOut;
 
-//    @FindBy(how = How.XPATH, using = "")
-//    public static WebElement x;
+    @FindBy(how = How.XPATH, using = "//a[@href]")
+    public static List<WebElement> links;
+
+//    @FindAll({
+//           @FindBy(how = How.XPATH, using = "//a[@href]")
+//    })
+//    public static WebElement[] links;
 }

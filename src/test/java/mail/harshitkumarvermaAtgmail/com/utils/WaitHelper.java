@@ -1,6 +1,8 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
@@ -48,5 +50,16 @@ public class WaitHelper {
      */
     public static WebElement waitForElementToBeClickable(WebElement webElement, long timOutInSeconds){
         return SeleniumHelper.getWebDriverWait(timOutInSeconds).until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    /**
+     * Waits until the page is fully loaded.
+     */
+    public static void waitForPageToLoad() {
+        SeleniumHelper.getWebDriverWait().until((ExpectedCondition<Boolean>) webDriver ->
+        {
+            assert webDriver != null;
+            return ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete");
+        });
     }
 }

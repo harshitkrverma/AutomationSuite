@@ -6,12 +6,19 @@ import mail.harshitkumarvermaAtgmail.com.actions.HomePageActions;
 import mail.harshitkumarvermaAtgmail.com.utils.*;
 import org.openqa.selenium.WebElement;
 
+
 public class StepDefinitions {
+
+
     @Given("User navigates to the login page")
     public static void givenUserNavigatesToTheLoginPage(){
         SeleniumHelper.openURL(PropertiesHelper.getProperty("URL"));
     }
 
+    @Given("User navigates to the {string}")
+    public static void givenUserNavigatesURL(String URL) {
+        SeleniumHelper.openURL(URL);
+    }
 
     @Then("User Enters username")
     public void userEntersUsername() {
@@ -40,5 +47,12 @@ public class StepDefinitions {
         WebElement element = PomHelper.LocatorHelper(locatorString);
         String actualVal = ElementHelper.getTextOfElement(element);
         AssertionHelper.assertTextMatch(value, actualVal);
+    }
+
+    @Then("Test all links and verify no errors")
+    public void testAllLinksAndVerifyNoErrors() {
+        WaitHelper.waitForPageToLoad();
+        String URL = SeleniumHelper.getWebDriver().getCurrentUrl();
+        ElementHelper.testAllLinksOnPage(URL);
     }
 }

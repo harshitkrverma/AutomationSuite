@@ -1,6 +1,7 @@
 package mail.harshitkumarvermaAtgmail.com.utils;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
@@ -41,5 +42,14 @@ public class ScenarioHelper {
     public static void afterScenario(){
         scenarioDataMap.clear();
         tags.clear();
+    }
+
+    /**
+     * Hook executed after all scenario. Closes the browser.
+     */
+    @AfterAll
+    public static void afterAllScenarios() throws InterruptedException {
+        Thread.sleep(10000);
+        SeleniumHelper.getWebDriver().quit();
     }
 }

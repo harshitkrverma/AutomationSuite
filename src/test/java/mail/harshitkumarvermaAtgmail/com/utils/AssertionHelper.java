@@ -54,4 +54,14 @@ public class AssertionHelper {
     public static void assertContainsText(String expected, String actual) {
         Assert.assertTrue("Actual text does not contain expected", actual.contains(expected));
     }
+
+    /**
+     * Asserts that the actual string does NOT contain the unexpected substring.
+     *
+     * @param unexpected the substring that should not be present
+     * @param actual     the actual string
+     */
+    public static void assertDoesNotContainText(String unexpected, String actual) {
+        Assert.assertFalse("Actual text contains unexpected string: " + unexpected, actual.contains(unexpected));
+    }
 }
