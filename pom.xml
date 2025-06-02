@@ -79,26 +79,35 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>net.masterthought</groupId>
-        <artifactId>maven-cucumber-reporting</artifactId>
-        <version>5.7.0</version>
-        <executions>
-          <execution>
-            <id>execution</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
-              <projectName>cucumber</projectName>
-              <outputDirectory>${project.build.directory}/cucumber-reports-html</outputDirectory>
-              <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
-              <jsonFiles>
-                <param>${project.build.directory}/cucumber-reports/cucumber.json</param>
-              </jsonFiles>
-            </configuration>
-          </execution>
-        </executions>
+          <groupId>net.masterthought</groupId>
+          <artifactId>maven-cucumber-reporting</artifactId>
+          <version>5.7.7</version>
+          <executions>
+              <execution>
+                  <id>execution</id>
+                  <phase>verify</phase>
+                  <goals>
+                      <goal>generate</goal>
+                  </goals>
+                  <configuration>
+                      <projectName>Automation Test Report</projectName>
+                      <skip>false</skip>
+                      <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                      <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
+                      <jsonFiles>
+                          <param>**/*.json</param>
+                      </jsonFiles>
+                      <mergeFeaturesById>false</mergeFeaturesById>
+                      <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                      <checkBuildResult>false</checkBuildResult>
+                      <classifications>
+                          <Environment>Test</Environment>
+                          <Platform>macOS</Platform>
+                          <Browser>Chrome</Browser>
+                      </classifications>
+                  </configuration>
+              </execution>
+          </executions>
       </plugin>
     </plugins>
   </build>

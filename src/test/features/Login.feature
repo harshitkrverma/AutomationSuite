@@ -2,13 +2,12 @@ Feature: Login scenarios
 
   @TC01 @Test_id_TC01
   Scenario: User is able to login
-#    Given User navigates to the login page
-#    Then User Enters "username" in field "HomePageLocators.userName"
-#    Then User Enters "password" in field "HomePageLocators.password"
-#    Then User Clicks on "HomePageLocators.loginButton"
-#    Then User verifies "Swag Labs" text is present at "HomePageLocators.banner"
-    Given User navigates to the "https://the-internet.herokuapp.com"
-    Then Test all links and verify no errors
+    Given User navigates to the login page
+    Then User Enters "username" in field "HomePageLocators.userName"
+    Then User Enters "password" in field "HomePageLocators.password"
+    Then User Clicks on "HomePageLocators.loginButton"
+    Then User verifies "Swag Labs" text is present at "HomePageLocators.banner"
+
 
   @TC01 @Test_id_TC02
   Scenario: User is able to login
@@ -35,9 +34,7 @@ Feature: Login scenarios
     Then User verifies "Swag Labs" text is present at "HomePageLocators.banner"
 
 
-
-#    @TC02 @Test_id_TC02
-#  Scenario: User is able to login
-##    Given User navigates to the login page
-##    Then User Enters username
-#    Then User prints Test Data
+  @TC02 @Test_id_TC02
+  Scenario: User validates all links on the page
+    Given User navigates to the "https://the-internet.herokuapp.com"
+    Then Test all links and verify no errors

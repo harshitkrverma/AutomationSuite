@@ -4,6 +4,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,9 +39,16 @@ public class ScenarioHelper {
 
     /**
      * Hook executed after each scenario. Clears the data map and tags list.
+     *
+     * @param scenario the scenario object
      */
     @After
-    public static void afterScenario(){
+    public static void afterScenario(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) SeleniumHelper.getWebDriver())
+                    .getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "Screenshot");
+        }
         scenarioDataMap.clear();
         tags.clear();
     }
